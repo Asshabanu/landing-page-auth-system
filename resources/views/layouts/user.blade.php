@@ -3,53 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'DreamHome Admin Dashboard' }}</title>
+    <title>{{ $title ?? 'DreamHome User Dashboard' }}</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Tailwind CSS -->
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
+    
     <!-- Sidebar -->
-    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-md z-50 transition-transform transform lg:translate-x-0 -translate-x-full overflow-y-auto">
-        <div class="h-16 flex items-center justify-center bg-gray-800 text-white font-semibold text-lg">
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-md z-50 transform -translate-x-full lg:translate-x-0 transition-transform overflow-y-auto">
+        <div class="h-16 flex items-center justify-center bg-blue-800 text-white font-semibold text-lg">
             <i class="fas fa-home mr-2"></i> DreamHome
         </div>
         <nav class="mt-4 px-2">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('admin.dashboard') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
+            <a href="{{ route('user.dashboard') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('user.dashboard') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
                 <i class="fas fa-tachometer-alt w-5"></i>
                 <span class="ml-3">Dashboard</span>
             </a>
-            <a href="{{ route('admin.properties') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('admin.properties') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
-                <i class="fas fa-building w-5"></i>
-                <span class="ml-3">Properties</span>
+            <a href="{{ route('user.properties') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('user.properties*') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
+                <i class="fas fa-home w-5"></i>
+                <span class="ml-3">My Properties</span>
             </a>
-            <a href="{{ route('admin.users') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('admin.users') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
-                <i class="fas fa-users w-5"></i>
-                <span class="ml-3">Users</span>
-            </a>
-            <a href="{{ route('admin.bookings') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('admin.bookings') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
+            <a href="{{ route('user.bookings') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('user.bookings*') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
                 <i class="fas fa-calendar-check w-5"></i>
-                <span class="ml-3">Bookings</span>
+                <span class="ml-3">My Bookings</span>
             </a>
-            <a href="{{ route('admin.reviews') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('admin.reviews') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
-                <i class="fas fa-comments w-5"></i>
+            <a href="{{ route('user.reviews') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('user.reviews*') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
+                <i class="fas fa-star w-5"></i>
                 <span class="ml-3">Reviews</span>
             </a>
-            <a href="{{ route('admin.settings') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('admin.settings') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
-                <i class="fas fa-cog w-5"></i>
-                <span class="ml-3">Settings</span>
+            <a href="{{ route('user.earnings') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('user.earnings*') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
+                <i class="fas fa-wallet w-5"></i>
+                <span class="ml-3">Earnings</span>
             </a>
-            <a href="{{ route('admin.profile.show') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('admin.profile.show') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
+            <a href="{{ route('user.profile') }}" class="flex items-center p-3 rounded-lg mb-1 hover:bg-gray-100 {{ request()->routeIs('user.profile') ? 'bg-gray-100 border-l-4 border-blue-600 text-blue-600' : 'text-gray-800' }}">
                 <i class="fas fa-user w-5"></i>
-                <span class="ml-3">My Profile</span>
+                <span class="ml-3">My Profile</span> 
             </a>
-            <form action="{{ route('logout') }}" method="POST">
+            <form action="{{ route('logout') }}" method="POST" class="mt-4">
                 @csrf
-                <button type="submit" class="flex items-center p-3 w-full text-left rounded-lg mt-4 hover:bg-gray-100 text-gray-800">
+                <button type="submit" class="flex items-center p-3 w-full text-left rounded-lg hover:bg-gray-100 text-gray-800">
                     <i class="fas fa-sign-out-alt w-5"></i>
                     <span class="ml-3">Logout</span>
                 </button>
@@ -64,9 +60,15 @@
                 <button id="menu-toggle" class="text-gray-800 text-xl lg:hidden mr-4">
                     <i class="fas fa-bars"></i>
                 </button>
-                <!-- Updated to use consistent page title -->
                 <h1 class="text-xl font-semibold">
-                    {{ request()->routeIs('admin.profile.show') ? 'My Profile' : ($title ?? 'Dashboard') }}
+                    {{ 
+                        request()->routeIs('user.dashboard') ? 'Dashboard' :
+                        (request()->routeIs('user.properties*') ? 'My Properties' :
+                        (request()->routeIs('user.bookings*') ? 'My Bookings' :
+                        (request()->routeIs('user.reviews*') ? 'Reviews' :
+                        (request()->routeIs('user.earnings*') ? 'Earnings' :
+                        (request()->routeIs('user.profile') ? 'My Profile' : ($title ?? 'Dashboard'))))))
+                    }}
                 </h1>
             </div>
             <div class="flex items-center space-x-4">
@@ -83,7 +85,7 @@
                     <img src="https://source.unsplash.com/random/36x36?person" alt="User" class="w-9 h-9 rounded-full object-cover">
                     <div>
                         <p class="font-semibold text-sm">{{ Auth::user()->name }}</p>
-                        <p class="text-gray-500 text-xs">Administrator</p>
+                        <p class="text-gray-500 text-xs">Property Owner</p>
                     </div>
                 </div>
             </div>
@@ -94,7 +96,7 @@
         </main>
         <!-- Footer -->
         <footer class="bg-white text-gray-500 text-sm text-center py-4 border-t">
-            &copy; 2025 DreamHome Admin Dashboard. All rights reserved.
+            &copy; 2025 DreamHome User Dashboard. All rights reserved.
         </footer>
     </div>
     <!-- Chart.js -->

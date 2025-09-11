@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -37,31 +38,36 @@ class AdminController extends Controller
             'pendingApprovals',
             'totalUsers',
             'recentActivities'
-        ));
+        ))->with('title', 'Dashboard');
     }
 
     public function properties()
     {
-        return view('admin.properties');
+        return view('admin.properties')->with('title', 'Properties');
     }
 
     public function users()
     {
-        return view('admin.users');
+        return view('admin.users')->with('title', 'Users');
     }
 
     public function bookings()
     {
-        return view('admin.bookings');
+        return view('admin.bookings')->with('title', 'Bookings');
     }
 
     public function reviews()
     {
-        return view('admin.reviews');
+        return view('admin.reviews')->with('title', 'Reviews');
     }
 
     public function settings()
     {
-        return view('admin.settings');
+        return view('admin.settings')->with('title', 'Settings');
+    }
+
+    public function profile()
+    {
+        return view('admin.profile')->with('title', 'My Profile');
     }
 }
